@@ -230,8 +230,7 @@
 			hw-thd-dat = <22>;
 			hw-thd-sta = <35>;
 			hw-tbuf = <62>;
-			//hw-scl-stretch-en = <0>;
-			hw-scl-stretch-en = <1>;
+			hw-scl-stretch-en = <0>;
 			hw-trdhld = <6>;
 			hw-tsp = <3>;
 			cci-clk-src = <37500000>;
@@ -261,7 +260,7 @@
 			hw-thd-dat = <16>;
 			hw-thd-sta = <15>;
 			hw-tbuf = <24>;
-			hw-scl-stretch-en = <1>;
+			hw-scl-stretch-en = <0>;
 			hw-trdhld = <3>;
 			hw-tsp = <3>;
 			cci-clk-src = <37500000>;
@@ -324,7 +323,7 @@
 			hw-thd-dat = <22>;
 			hw-thd-sta = <35>;
 			hw-tbuf = <62>;
-			hw-scl-stretch-en = <1>;
+			hw-scl-stretch-en = <0>;
 			hw-trdhld = <6>;
 			hw-tsp = <3>;
 			cci-clk-src = <37500000>;
@@ -354,7 +353,7 @@
 			hw-thd-dat = <16>;
 			hw-thd-sta = <15>;
 			hw-tbuf = <24>;
-			hw-scl-stretch-en = <1>;
+			hw-scl-stretch-en = <0>;
 			hw-trdhld = <3>;
 			hw-tsp = <3>;
 			cci-clk-src = <37500000>;
@@ -1273,7 +1272,6 @@
 		clocks-option = <&clock_camcc CAM_CC_IFE_0_DSP_CLK>;
 		clock-rates-option = <720000000>;
 		ubwc-static-cfg = <0x1026 0x1036>;
-		qcom,iommu-faults = "non-fatal";
 		status = "ok";
 	};
 
@@ -1356,7 +1354,6 @@
 		clocks-option = <&clock_camcc CAM_CC_IFE_1_DSP_CLK>;
 		clock-rates-option = <720000000>;
 		ubwc-static-cfg = <0x1026 0x1036>;
-		qcom,iommu-faults = "non-fatal";
 		status = "ok";
 	};
 
@@ -1425,7 +1422,6 @@
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "turbo";
 		src-clock-name = "ife_clk_src";
 		clock-control-debugfs = "true";
-		qcom,iommu-faults = "non-fatal";
 		status = "ok";
 	};
 
@@ -1441,11 +1437,11 @@
 		camss-supply = <&titan_top_gdsc>;
 		clock-names =
 			"ife_csid_clk_src",
-			"ife_lite_ahb",
 			"ife_csid_clk",
 			"cphy_rx_clk_src",
 			"ife_cphy_rx_clk",
 			"ife_clk_src",
+			"ife_lite_ahb",
 			"ife_clk";
 		clocks =
 			<&clock_camcc CAM_CC_IFE_LITE_CSID_CLK_SRC>,
@@ -1494,7 +1490,6 @@
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "turbo";
 		src-clock-name = "ife_clk_src";
 		clock-control-debugfs = "true";
-		qcom,iommu-faults = "non-fatal";
 		status = "ok";
 	};
 

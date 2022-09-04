@@ -23,6 +23,7 @@ kona-qrd-overlay.dtbo-base := kona.dtb kona-v2.dtb kona-v2.1.dtb
 kona-xrfusion-overlay.dtbo-base := kona.dtb kona-v2.dtb kona-v2.1.dtb
 kona-xrfusion-ult-overlay.dtbo-base := kona.dtb kona-v2.dtb kona-v2.1.dtb
 kona-hdk-overlay.dtbo-base := kona.dtb kona-v2.dtb kona-v2.1.dtb
+
 else
 dtb-$(CONFIG_ARCH_KONA) += kona-rumi.dtb \
         kona-mtp.dtb \
@@ -55,7 +56,7 @@ dtb-$(CONFIG_ARCH_KONA) += kona-rumi.dtb \
         kona-v2.1-iot-rb5.dtb
 endif
 
-ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY_NOT_OEM),y)
 dtbo-$(CONFIG_ARCH_LITO) += lito-rumi-overlay.dtbo \
                 lito-mtp-overlay.dtbo \
                 lito-v2-mtp-overlay.dtbo \
@@ -66,8 +67,6 @@ dtbo-$(CONFIG_ARCH_LITO) += lito-rumi-overlay.dtbo \
                 lito-v2-atp-lcd-overlay.dtbo \
                 lito-qrd-overlay.dtbo \
                 lito-v2-qrd-overlay.dtbo \
-                litomagnus-mtp-overlay.dtbo \
-                litomagnus-cdp-overlay.dtbo \
                 orchid-mtp-overlay.dtbo \
                 orchid-cdp-overlay.dtbo
 
@@ -81,10 +80,16 @@ lito-v2-atp-overlay.dtbo-base := lito-v2.dtb
 lito-v2-atp-lcd-overlay.dtbo-base := lito-v2.dtb
 lito-qrd-overlay.dtbo-base := lito.dtb
 lito-v2-qrd-overlay.dtbo-base := lito-v2.dtb
-litomagnus-mtp-overlay.dtbo-base := litomagnus.dtb
-litomagnus-cdp-overlay.dtbo-base := litomagnus.dtb
 orchid-mtp-overlay.dtbo-base := orchid.dtb
 orchid-cdp-overlay.dtbo-base := orchid.dtb
+
+else
+ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+        dtbo-$(CONFIG_ARCH_LITO) += \
+                avicii-overlay.dtbo \
+
+avicii-overlay.dtbo-base := lito.dtb
+
 else
 dtb-$(CONFIG_ARCH_LITO) += lito-rumi.dtb \
                 lito-mtp.dtb \
@@ -96,10 +101,9 @@ dtb-$(CONFIG_ARCH_LITO) += lito-rumi.dtb \
                 lito-v2-atp.dtb \
                 lito-v2-atp-lcd.dtb \
                 lito-v2-qrd.dtb \
-                litomagnus-mtp.dtb \
-                litomagnus-cdp.dtb \
                 orchid-mtp.dtb \
                 orchid-cdp.dtb
+endif
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
